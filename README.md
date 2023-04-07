@@ -7,16 +7,20 @@
 
 Файл CMakeLists.txt в директории formatter_lib
 
-``cmake_minimum_required(VERSION 3.4)
+```
+cmake_minimum_required(VERSION 3.4)
 project(formatter_lib)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-add_library(formatter_lib STATIC ${CMAKE_CURRENT_SOURCE_DIR}/formatter.cpp)``
+add_library(formatter_lib STATIC ${CMAKE_CURRENT_SOURCE_DIR}/formatter.cpp)
+```
 
 Собираем
 
-``$ cmake -B build
-$ cmake --build build``
+```
+$ cmake -B build
+$ cmake --build build
+```
 
 ![VirtualBox_kali-linux-2022 4-virtualbox-amd64_07_04_2023_07_29_54](https://user-images.githubusercontent.com/112771541/230545012-6fbcc96d-131d-4900-940d-4688d4a0df7f.png)
 
@@ -26,7 +30,8 @@ $ cmake --build build``
 
 Файл CMakeLists.txt в директории Formatter_ex_lib
 
-``cmake_minimum_required(VERSION 3.4)
+```
+cmake_minimum_required(VERSION 3.4)
 project(formatter_ex_lib)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -39,12 +44,15 @@ target_include_directories(formatter_ex_lib PUBLIC
 ${CMAKE_CURRENT_SOURCE_DIR}/../formatter_lib
 )
 
-target_link_libraries(formatter_ex_lib formatter_lib)``
+target_link_libraries(formatter_ex_lib formatter_lib)
+```
 
 Собираем
 
-``$ cmake -B build
-$ cmake --build build``
+```
+$ cmake -B build
+$ cmake --build build
+```
 
 ![VirtualBox_kali-linux-2022 4-virtualbox-amd64_07_04_2023_07_42_30](https://user-images.githubusercontent.com/112771541/230545515-43c221ce-8f0e-4bbd-8419-dc979530537f.png)
 
@@ -56,9 +64,10 @@ $ cmake --build build``
 
 Файл CMakeLists.txt в директории hello_world_application
 
+```
 cmake_minimum_required(VERSION 3.4)
 
-``project(hello_world)
+project(hello_world)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../formatter_ex_lib formatter_ex_lib_dir)
@@ -69,16 +78,21 @@ target_include_directories(hello_world PUBLIC
 ${CMAKE_CURRENT_SOURCE_DIR}/../formatter_ex_lib
 )
 
-target_link_libraries(hello_world formatter_ex_lib)``
+target_link_libraries(hello_world formatter_ex_lib)
+```
 
 Собираем
 
-``$ cmake -B build
-$ cmake --build build``
+```
+$ cmake -B build
+$ cmake --build build
+```
 
 Запускаем
 
-``$ build/hello_world``
+```
+$ build/hello_world
+```
 
 ![VirtualBox_kali-linux-2022 4-virtualbox-amd64_07_04_2023_07_48_00](https://user-images.githubusercontent.com/112771541/230545717-56a7b3d0-a3fc-4c6e-b338-74801c477d4a.png)
 
@@ -88,7 +102,8 @@ $ cmake --build build``
 
 Исправленный файл solver.cpp
 
-``#include "solver.h"
+```
+#include "solver.h"
 
 #include <cmath>
 #include <stdexcept>
@@ -104,21 +119,25 @@ void solve(float a, float b, float c, float& x1, float& x2)
 
     x1 = (-b - sqrtf(d)) / (2 * a);
     x2 = (-b + sqrtf(d)) / (2 * a);
-}``
+}
+```
 
 CMakeLists.txt
 
-``cmake_minimum_required(VERSION 3.4)
+```
+cmake_minimum_required(VERSION 3.4)
 project(solver_lib)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-add_library(solver_lib ${CMAKE_CURRENT_SOURCE_DIR}/solver.cpp)``
+add_library(solver_lib ${CMAKE_CURRENT_SOURCE_DIR}/solver.cpp)
+```
 
 Директория solver_application
 
 CMakeLists.txt
 
-``cmake_minimum_required(VERSION 3.4)
+```
+cmake_minimum_required(VERSION 3.4)
 project(solver)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -129,17 +148,22 @@ target_include_directories(formatter_ex_lib PUBLIC
 ${CMAKE_CURRENT_SOURCE_DIR}/../formatter_ex_lib
 ${CMAKE_CURRENT_SOURCE_DIR}/../solver_lib
 )
-target_link_libraries(solver formatter_ex_lib solver_lib)``
+target_link_libraries(solver formatter_ex_lib solver_lib)
+```
 
 Собираем
 
-``$ cmake -B build
-$ cmake --build build``
+```
+$ cmake -B build
+$ cmake --build build
+```
 
 ![VirtualBox_kali-linux-2022 4-virtualbox-amd64_07_04_2023_07_55_29](https://user-images.githubusercontent.com/112771541/230546127-ba00fc63-92fa-454c-8218-8ba9799b049e.png)
 
 Запускаем
 
-``$ build/solver ``
+```
+$ build/solver 
+```
 
 ![VirtualBox_kali-linux-2022 4-virtualbox-amd64_07_04_2023_07_56_00](https://user-images.githubusercontent.com/112771541/230546208-6822f3a1-46fe-4f15-8bec-e9142793f762.png)
